@@ -1,20 +1,19 @@
-# ⚽ Teamateur - Gestor de Equipos de Fútbol
+#  Teamateur - Gestor de Equipos de Fútbol
 
-📅 **Fecha límite de entrega**: 22/06/2025  
-📌 **Stack**:  
+ **Stack**:  
 - 🖥️ Frontend: React Native  
 - 🔙 Backend: NestJS  
 - 💾 Base de Datos: PostgreSQL
 
 ---
 
-## 🧠 Descripción
+##  Descripción
 
 **Teamateur** es una aplicación móvil para gestionar equipos de fútbol. Permite registrar equipos, jugadores y entrenadores, simular partidos entre equipos y llevar el control de los partidos ganados.
 
 ---
 
-## 🚀 Funcionalidades
+##  Funcionalidades
 
 1. ✅ **Crear Equipos**  
    Permite registrar nuevos equipos con nombre.
@@ -44,8 +43,5 @@
 7. ✅ **Ranking de Equipos con Más Victorias**  
    Lista los equipos ordenados por cantidad de partidos ganados.
 
----
-
-## 📂 Estructura del Proyecto
 
 

@@ -62,7 +62,6 @@ const AppNavigator = () => {
         }}
       />
 
-      {/* Pantallas de Jugadores */}
       <Stack.Screen
         name="CreatePlayer"
         component={CreatePlayerScreen}

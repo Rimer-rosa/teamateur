@@ -1,47 +1,25 @@
-#  Teamateur - Gestor de Equipos de Fútbol
+## 🎯 Objetivo del reto
 
- **Stack**:  
-- 🖥️ Frontend: React Native  
-- 🔙 Backend: NestJS  
-- 💾 Base de Datos: PostgreSQL
-
----
-
-##  Descripción
-
-**Teamateur** es una aplicación móvil para gestionar equipos de fútbol. Permite registrar equipos, jugadores y entrenadores, simular partidos entre equipos y llevar el control de los partidos ganados.
+1. ✅ Crear equipos (nombre).
+2. ✅ Añadir jugadores (nombre, posición, número de camiseta, edad).
+3. ✅ Asignar un entrenador (nombre, edad, estrategia).
+4. ✅ Listar el equipo completo (jugadores y entrenador).
+5. ✅ Buscar jugadores por posición (ejemplo: "Delantero", "Defensa").
+6. ✅ Simular un partido (se eligen 2 equipos y de forma aleatoria se define el ganador).
+7. ✅ Mostrar los equipos con más partidos ganados.
 
 ---
 
-##  Funcionalidades
+## 📁 Estructura del proyecto
 
-1. ✅ **Crear Equipos**  
-   Permite registrar nuevos equipos con nombre.
-
-2. ✅ **Añadir Jugadores**  
-   Registra jugadores con:
-   - Nombre
-   - Edad
-   - Posición (Delantero, Defensa, Portero, etc.)
-   - Número de camiseta
-
-3. ✅ **Asignar Entrenador**  
-   Cada equipo puede tener un entrenador con:
-   - Nombre
-   - Edad
-   - Estrategia
-
-4. ✅ **Listar Equipo Completo**  
-   Muestra todos los jugadores y el entrenador asignado a un equipo.
-
-5. ✅ **Buscar Jugadores por Posición**  
-   Filtra jugadores según su posición (por ejemplo: "Delantero").
-
-6. ✅ **Simular Partido**  
-   Se eligen 2 equipos, y aleatoriamente se decide un ganador.
-
-7. ✅ **Ranking de Equipos con Más Victorias**  
-   Lista los equipos ordenados por cantidad de partidos ganados.
-
-
+```bash
+Teamateur/
+│
+├── reto-backend/          # API REST construida con Node.js (NestJS o Express)
+│   └── README.md     # Instrucciones para levantar el backend
+│
+├── reto/         # Aplicación móvil construida con React Native
+│   └── README.md     # Instrucciones para correr la app en desarrollo
+│
+└── README.md         # Este archivo (descripción general del reto y estructura)
 

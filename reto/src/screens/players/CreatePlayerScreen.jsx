@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 import {
   ScrollView,
   StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { createPlayer, getPositions } from "../../api/playerApi";
 import Button from "../../components/ui/Button";
 import CustomAlert from "../../components/ui/CustomAlert";
 import Input from "../../components/ui/Input";
+import SelectInput from "../../components/ui/SelectInput";
 
 const CreatePlayerScreen = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -95,7 +94,7 @@ const CreatePlayerScreen = ({ navigation }) => {
     setShowPositionDropdown(false);
   };
 
-  return (
+return (
     <View style={styles.container}>
       <View style={styles.stadiumEffect}>
         <View style={styles.stadiumTop} />
@@ -114,37 +113,13 @@ const CreatePlayerScreen = ({ navigation }) => {
           onChangeText={setName}
         />
 
-     <View style={styles.inputContainer}>
-  <Text style={styles.label}>POSICIÓN</Text>
-  <TouchableOpacity
-    style={[
-      styles.positionSelector,
-      position && styles.positionSelected,
-    ]}
-    onPress={() => setShowPositionDropdown(!showPositionDropdown)}
-  >
-    <Text style={styles.positionText}>
-      {position || "SELECCIONA UNA POSICIÓN"}
-    </Text>
-    <Text style={styles.dropdownIcon}>
-      {showPositionDropdown ? "▲" : "▼"}
-    </Text>
-  </TouchableOpacity>
-
-  {showPositionDropdown && positions.length > 0 && (
-    <View style={styles.dropdown}>
-      {positions.map((pos) => (
-        <TouchableOpacity
-          key={pos}
-          style={styles.dropdownItem}
-          onPress={() => selectPosition(pos)}
-        >
-          <Text style={styles.dropdownItemText}>{pos}</Text>
-        </TouchableOpacity>
-      ))}
-    </View>
-  )}
-</View>
+        <SelectInput
+          label="POSICIÓN"
+          value={position}
+          options={positions}
+          onSelect={setPosition}
+          placeholder="SELECCIONA UNA POSICIÓN"
+        />
 
         <Input
           label="NÚMERO DE CAMISETA"

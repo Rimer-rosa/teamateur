@@ -1,23 +1,26 @@
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import { createCoach } from '../../api/coachApi.jsx';
 import Button from '../../components/ui/Button';
 import CustomAlert from '../../components/ui/CustomAlert';
 import Input from '../../components/ui/Input';
+import SelectInput from "../../components/ui/SelectInput";
 
 const strategies = [
-  'Ofensiva',
-  'Defensiva',
   'Contraataque',
   'Posesión',
-  'Mixta'
+  'Presión alta',
+  'Juego directo',
+  'Catenaccio',
+  'Tiki-taka',
+  'Gegenpressing',
+  'Park the bus'
 ];
 
 const CreateCoachScreen = ({ navigation }) => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [strategy, setStrategy] = useState('');
-  const [showStrategyDropdown, setShowStrategyDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState({
     visible: false,
@@ -84,11 +87,6 @@ const CreateCoachScreen = ({ navigation }) => {
     }
   };
 
-  const selectStrategy = (strat) => {
-    setStrategy(strat);
-    setShowStrategyDropdown(false);
-  };
-
   return (
     <View style={styles.container}>
       <View style={styles.stadiumEffect}>
@@ -101,7 +99,6 @@ const CreateCoachScreen = ({ navigation }) => {
         contentContainerStyle={styles.scrollContainer}
         keyboardShouldPersistTaps="handled"
       >
-        
         <Input
           label="NOMBRE DEL ENTRENADOR"
           placeholder="Ej: Pep Guardiola"
@@ -119,38 +116,15 @@ const CreateCoachScreen = ({ navigation }) => {
           containerStyle={styles.inputMargin}
         />
         
-        <View style={[styles.inputContainer, styles.inputMargin]}>
-          <Text style={styles.label}>ESTRATEGIA PREFERIDA</Text>
-          <TouchableOpacity 
-            style={[
-              styles.strategySelector,
-              strategy && styles.strategySelected
-            ]}
-            onPress={() => setShowStrategyDropdown(!showStrategyDropdown)}
-            activeOpacity={0.7}
-            disabled={loading}
-          >
-            <Text style={styles.strategyText}>
-              {strategy || 'Selecciona una estrategia'}
-            </Text>
-            <Text style={styles.dropdownIcon}>{showStrategyDropdown ? '▲' : '▼'}</Text>
-          </TouchableOpacity>
-          
-          {showStrategyDropdown && (
-            <View style={styles.dropdown}>
-              {strategies.map((strat) => (
-                <TouchableOpacity
-                  key={strat}
-                  style={styles.dropdownItem}
-                  onPress={() => selectStrategy(strat)}
-                  activeOpacity={0.7}
-                >
-                  <Text style={styles.dropdownItemText}>{strat}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          )}
-        </View>
+        {/* SelectInput modificado para coincidir con el que funciona */}
+        <SelectInput
+          label="ESTRATEGIA PREFERIDA"
+          value={strategy}
+          options={strategies}
+          onSelect={setStrategy}
+          placeholder="SELECCIONA UNA ESTRATEGIA"
+          containerStyle={styles.inputMargin}
+        />
         
         <Button 
           title={loading ? 'CREANDO ENTRENADOR...' : 'REGISTRAR ENTRENADOR'} 
@@ -215,79 +189,8 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
   },
-  screenTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#fff',
-    marginBottom: 30,
-    textAlign: 'center',
-    letterSpacing: 1.5,
-    textTransform: 'uppercase',
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 3,
-  },
   inputMargin: {
     marginBottom: 20,
-  },
-  inputContainer: {
-    position: 'relative',
-    zIndex: 2,
-  },
-  label: {
-    fontSize: 14,
-    marginBottom: 8,
-    color: '#fff',
-    fontWeight: 'bold',
-    letterSpacing: 1,
-    textTransform: 'uppercase',
-  },
-  strategySelector: {
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 6,
-    padding: 15,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  strategySelected: {
-    borderColor: '#007AFF',
-  },
-  strategyText: {
-    color: '#fff',
-    fontSize: 16,
-  },
-  dropdownIcon: {
-    color: '#fff',
-    fontSize: 12,
-  },
-  dropdown: {
-    position: 'absolute',
-    top: 70,
-    left: 0,
-    right: 0,
-    maxHeight: 200,
-    borderWidth: 1,
-    borderColor: 'rgba(255, 255, 255, 0.2)',
-    borderRadius: 6,
-    backgroundColor: '#2c3e50',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    elevation: 3,
-    zIndex: 10,
-  },
-  dropdownItem: {
-    padding: 15,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
-  },
-  dropdownItemText: {
-    fontSize: 16,
-    color: '#fff',
   },
 });
 

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ActivityIndicator, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { getTeamRoster, getTeams, simulateMatch } from '../../api/teamApi';
 import Button from '../../components/ui/Button';
 import CustomAlert from '../../components/ui/CustomAlert';
+import SelectInput from '../../components/ui/SelectInput';
 
 const PlayMatchScreen = ({ navigation }) => {
   const [allTeams, setAllTeams] = useState([]);
@@ -62,7 +63,11 @@ const PlayMatchScreen = ({ navigation }) => {
             };
             
             if (isComplete) {
-              complete.push(team);
+              complete.push({
+                value: team.id,
+                label: team.name,
+                startersCount: starters.length
+              });
             }
           } catch (error) {
             console.error(`Error checking team ${team.name}:`, error);
@@ -83,7 +88,11 @@ const PlayMatchScreen = ({ navigation }) => {
     loadTeams();
   }, []);
 
-  const handleTeamSelection = (team, isTeam1) => {
+  const handleTeamSelection = (teamId, isTeam1) => {
+    const team = allTeams.find(t => t.id === teamId);
+    
+    if (!team) return;
+
     if (isTeam1) {
       if (selectedTeam2 && team.id === selectedTeam2.id) {
         showAlert('error', 'ERROR', 'No puedes seleccionar el mismo equipo en ambos lados');
@@ -169,36 +178,14 @@ const PlayMatchScreen = ({ navigation }) => {
 
         <View style={styles.teamSelection}>
           <Text style={styles.label}>EQUIPO LOCAL:</Text>
-          <View style={styles.selectorContainer}>
-            {selectedTeam1 ? (
-              <View style={styles.selectedTeamContainer}>
-                <Text style={styles.selectedTeamName}>{selectedTeam1.name}</Text>
-                <TouchableOpacity 
-                  style={styles.changeButton}
-                  onPress={() => setSelectedTeam1(null)}
-                >
-                  <Text style={styles.changeButtonText}>CAMBIAR</Text>
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <View style={styles.dropdown}>
-                {completeTeams.map(team => (
-                  <TouchableOpacity
-                    key={`local-${team.id}`}
-                    style={styles.teamOption}
-                    onPress={() => handleTeamSelection(team, true)}
-                  >
-                    <Text style={styles.teamOptionText}>{team.name}</Text>
-                    <View style={styles.teamBadge}>
-                      <Text style={styles.teamBadgeText}>
-                        {teamDetails[team.id]?.startersCount || 0}/11
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-          </View>
+          
+          <SelectInput
+            value={selectedTeam1?.id || null}
+            options={completeTeams}
+            onSelect={(value) => handleTeamSelection(value, true)}
+            placeholder="SELECCIONA EQUIPO LOCAL"
+            disabled={completeTeams.length === 0}
+          />
           
           {selectedTeam1 && teamDetails[selectedTeam1.id] && (
             <View style={styles.teamDetailsContainer}>
@@ -225,36 +212,14 @@ const PlayMatchScreen = ({ navigation }) => {
 
         <View style={styles.teamSelection}>
           <Text style={styles.label}>EQUIPO VISITANTE:</Text>
-          <View style={styles.selectorContainer}>
-            {selectedTeam2 ? (
-              <View style={styles.selectedTeamContainer}>
-                <Text style={styles.selectedTeamName}>{selectedTeam2.name}</Text>
-                <TouchableOpacity 
-                  style={styles.changeButton}
-                  onPress={() => setSelectedTeam2(null)}
-                >
-                  <Text style={styles.changeButtonText}>CAMBIAR</Text>
-                </TouchableOpacity>
-              </View>
-            ) : (
-              <View style={styles.dropdown}>
-                {completeTeams.map(team => (
-                  <TouchableOpacity
-                    key={`visitor-${team.id}`}
-                    style={styles.teamOption}
-                    onPress={() => handleTeamSelection(team, false)}
-                  >
-                    <Text style={styles.teamOptionText}>{team.name}</Text>
-                    <View style={styles.teamBadge}>
-                      <Text style={styles.teamBadgeText}>
-                        {teamDetails[team.id]?.startersCount || 0}/11
-                      </Text>
-                    </View>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            )}
-          </View>
+          
+          <SelectInput
+            value={selectedTeam2?.id || null}
+            options={completeTeams}
+            onSelect={(value) => handleTeamSelection(value, false)}
+            placeholder="SELECCIONA EQUIPO VISITANTE"
+            disabled={completeTeams.length === 0}
+          />
           
           {selectedTeam2 && teamDetails[selectedTeam2.id] && (
             <View style={styles.teamDetailsContainer}>
@@ -324,7 +289,6 @@ const PlayMatchScreen = ({ navigation }) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

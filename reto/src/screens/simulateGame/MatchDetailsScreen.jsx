@@ -40,7 +40,6 @@ const MatchDetailsScreen = ({ route }) => {
     date: result?.date || new Date().toISOString()
   };
 
-  // Calcular porcentaje de fuerza relativa
   const totalStrength = safeResult.winner.strength + safeResult.loser.strength;
   const winnerStrengthPercent = totalStrength > 0 
     ? Math.round((safeResult.winner.strength / totalStrength) * 100) 
@@ -61,14 +60,12 @@ const MatchDetailsScreen = ({ route }) => {
       >
         <Text style={styles.title}>DETALLES DEL PARTIDO</Text>
         
-        {/* Resultado principal */}
         <View style={styles.resultContainer}>
           <Text style={styles.winnerText}>{safeResult.winner.name}</Text>
           <Text style={styles.vsText}>VS</Text>
           <Text style={styles.loserText}>{safeResult.loser.name}</Text>
         </View>
         
-        {/* Indicador de ganador */}
         <View style={styles.winnerContainer}>
           <Text style={styles.winnerLabel}>GANADOR: {safeResult.winner.name}</Text>
           <Text style={styles.strengthText}>
@@ -76,7 +73,6 @@ const MatchDetailsScreen = ({ route }) => {
           </Text>
         </View>
         
-        {/* Barra de fuerza relativa */}
         <View style={styles.strengthBarContainer}>
           <View style={[styles.strengthBarWinner, {flex: winnerStrengthPercent}]} />
           <View style={[styles.strengthBarLoser, {flex: loserStrengthPercent}]} />
@@ -86,7 +82,6 @@ const MatchDetailsScreen = ({ route }) => {
           <Text style={styles.strengthLabel}>{loserStrengthPercent}%</Text>
         </View>
         
-        {/* Estadísticas del partido */}
         <View style={styles.statsContainer}>
           <Text style={styles.sectionTitle}>ESTADÍSTICAS DEL PARTIDO</Text>
           
@@ -140,7 +135,6 @@ const MatchDetailsScreen = ({ route }) => {
           </View>
         </View>
         
-        {/* Información de los equipos */}
         <View style={styles.teamSection}>
           <Text style={styles.sectionTitle}>EQUIPO GANADOR</Text>
           <View style={styles.teamDetailRow}>
@@ -183,7 +177,6 @@ const MatchDetailsScreen = ({ route }) => {
           </View>
         </View>
         
-        {/* Fecha del partido */}
         <Text style={styles.dateText}>
           PARTIDO SIMULADO EL: {new Date(safeResult.date).toLocaleDateString()}
         </Text>

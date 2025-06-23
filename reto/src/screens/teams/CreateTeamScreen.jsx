@@ -1,4 +1,3 @@
-// src/screens/CreateTeamScreen.js
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { createTeam } from '../../api/teamApi';

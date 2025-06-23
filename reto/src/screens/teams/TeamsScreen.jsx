@@ -1,4 +1,3 @@
-// src/screens/teams/TeamsScreen.js
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,

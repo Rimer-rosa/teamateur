@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '@env';
+import { API_BASE_URL } from "@env";
 import axios from "axios";
 
 export const createPlayer = async (playerData) => {
@@ -38,17 +38,21 @@ export const assignPlayerToTeam = async (playerId, teamId, isStarter) => {
 
 export const getPositions = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/players/positions`);
+    const response = await axios.get(`${API_BASE_URL}/positions`);
     return response.data;
   } catch (error) {
     console.error("Error getting positions:", error);
     return [
       "Arquero",
-      "Defensa",
-      "Mediocampista",
-      "Delantero",
-      "Lateral",
+      "Defensa central",
+      "Lateral derecho",
+      "Lateral izquierdo",
+      "Mediocampista defensivo",
+      "Mediocampista ofensivo",
       "Volante",
+      "Extremo derecho",
+      "Extremo izquierdo",
+      "Delantero",
     ];
   }
 };

@@ -35,13 +35,6 @@ export class Team {
 
   @Column({ default: false })
   isComplete: boolean;
-
-  @Column({ nullable: true })
-  stadium?: string;
-
-  @Column({ nullable: true })
-  city?: string;
-
   public checkCompleteness(): boolean {
     if (!this.players || !this.coach) return false;
 

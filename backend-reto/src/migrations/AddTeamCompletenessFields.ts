@@ -5,8 +5,6 @@ export class AddTeamCompletenessFields implements MigrationInterface {
         await queryRunner.query(`
             ALTER TABLE team 
             ADD COLUMN "isComplete" boolean NOT NULL DEFAULT false,
-            ADD COLUMN "stadium" character varying,
-            ADD COLUMN "city" character varying
         `);
     }
 
@@ -14,8 +12,6 @@ export class AddTeamCompletenessFields implements MigrationInterface {
         await queryRunner.query(`
             ALTER TABLE team 
             DROP COLUMN "isComplete",
-            DROP COLUMN "stadium",
-            DROP COLUMN "city"
         `);
     }
 }

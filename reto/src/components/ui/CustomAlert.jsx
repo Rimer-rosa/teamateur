@@ -1,4 +1,3 @@
-// src/components/ui/CustomAlert.js
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const CustomAlert = ({ visible, type, title, message, onClose, onConfirm }) => {
@@ -23,7 +22,6 @@ const CustomAlert = ({ visible, type, title, message, onClose, onConfirm }) => {
             </TouchableOpacity>
           )}
           
-          {/* Botón de cerrar siempre visible */}
           <TouchableOpacity 
             style={[styles.alertButton, type === 'error' ? styles.errorButton : styles.closeButton]}
             onPress={onClose}

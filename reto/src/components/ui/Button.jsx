@@ -1,4 +1,3 @@
-// src/components/ui/Button.js
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Button = ({ title, onPress, variant = 'primary', icon }) => {

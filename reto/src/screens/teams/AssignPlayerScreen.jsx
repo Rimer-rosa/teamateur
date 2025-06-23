@@ -1,4 +1,3 @@
-// src/screens/teams/AssignPlayerScreen.js
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { assignPlayerToTeam } from "../../api/playerApi";
@@ -15,7 +14,7 @@ const AssignPlayerScreen = ({ route, navigation }) => {
     title: "",
     message: "",
     onConfirm: null,
-    showCloseButton: true, // Aseguramos que siempre haya botón de cerrar
+    showCloseButton: true, 
   });
 
   const showAlert = (type, title, message, onConfirm = null) => {
@@ -120,7 +119,7 @@ const AssignPlayerScreen = ({ route, navigation }) => {
         message={alert.message}
         onClose={hideAlert}
         onConfirm={alert.onConfirm}
-        showCloseButton={alert.showCloseButton} // Pasar esta prop al CustomAlert
+        showCloseButton={alert.showCloseButton} 
       />
     </View>
   );

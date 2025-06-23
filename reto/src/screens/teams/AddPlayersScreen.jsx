@@ -1,4 +1,3 @@
-// src/screens/teams/AddPlayersScreen.js
 import { useEffect, useState } from 'react';
 import {
   ActivityIndicator,
@@ -108,7 +107,6 @@ const AddPlayersScreen = ({ route, navigation }) => {
         </TouchableOpacity>
       </View>
 
-      {/* Modal del Picker */}
       <Modal
         visible={showPicker}
         transparent={true}

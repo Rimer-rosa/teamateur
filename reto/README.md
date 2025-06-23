@@ -1,51 +1,29 @@
-# Welcome to your Expo app 👋
+# 📱 Guía de Inicio — Frontend React Native (Teamateur)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Este frontend permite interactuar con la API del backend Teamateur desde una app móvil desarrollada en React Native.
 
-## Get started
+## ✅ Requisitos
 
-1. Install dependencies
+- Node.js 16+
+- npm o Yarn
+- Expo CLI (recomendado):
+  ```bash
+  npm install -g expo-cli
 
-   ```bash
-   npm install
-   ```
-2. configurar .env 
+🚀 Pasos para Ejecutar
+# 1. Clonar el repositorio
+git clone [URL_DEL_REPOSITORIO]
+cd teamateur-frontend
 
-3. Start the app
+# 2. Instalar dependencias
+npm install
+# o si usas Yarn
+yarn install
 
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+# 3. Crear archivo .env en la raíz del proyecto con la URL de la API
+API_BASE_URL=http://192.168.0.107:3000
+📢 Asegúrate de usar la IP local de tu máquina (no localhost) para que el emulador o dispositivo real pueda acceder al backend.
+# 4. Iniciar la app
+npx expo start
+# o si tienes el CLI global
+expo start

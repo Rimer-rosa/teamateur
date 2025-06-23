@@ -1,4 +1,3 @@
-// src/screens/teams/ManageTeamScreen.js
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -121,7 +120,6 @@ const ManageTeamScreen = ({ route, navigation }) => {
           />
         </View>
 
-        {/* Listado de jugadores */}
         <Text style={styles.sectionTitle}>
           JUGADORES DEL EQUIPO ({team?.players?.length || 0})
         </Text>

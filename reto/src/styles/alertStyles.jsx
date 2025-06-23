@@ -1,4 +1,3 @@
-// src/styles/alertStyles.js
 import { StyleSheet } from 'react-native';
 
 export const alertStyles = StyleSheet.create({

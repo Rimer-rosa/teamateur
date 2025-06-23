@@ -167,7 +167,6 @@ const PlayMatchScreen = ({ navigation }) => {
           </Text>
         )}
 
-        {/* Selector de Equipo Local */}
         <View style={styles.teamSelection}>
           <Text style={styles.label}>EQUIPO LOCAL:</Text>
           <View style={styles.selectorContainer}>
@@ -224,7 +223,6 @@ const PlayMatchScreen = ({ navigation }) => {
           )}
         </View>
 
-        {/* Selector de Equipo Visitante */}
         <View style={styles.teamSelection}>
           <Text style={styles.label}>EQUIPO VISITANTE:</Text>
           <View style={styles.selectorContainer}>

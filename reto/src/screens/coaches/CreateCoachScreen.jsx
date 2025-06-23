@@ -1,7 +1,6 @@
-// src/screens/coaches/CreateCoachScreen.js
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { createCoach } from '../../api/coachApi';
+import { createCoach } from '../../api/coachApi.jsx';
 import Button from '../../components/ui/Button';
 import CustomAlert from '../../components/ui/CustomAlert';
 import Input from '../../components/ui/Input';

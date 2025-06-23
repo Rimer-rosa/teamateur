@@ -1,4 +1,3 @@
-// src/components/ui/Input.js
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 
 const Input = ({ label, placeholder, value, onChangeText, keyboardType }) => {

@@ -1,4 +1,3 @@
-// src/screens/players/CreatePlayerScreen.js
 import { useEffect, useState } from "react";
 import {
   ScrollView,
@@ -115,37 +114,37 @@ const CreatePlayerScreen = ({ navigation }) => {
           onChangeText={setName}
         />
 
-        <View style={styles.inputContainer}>
-          <Text style={styles.label}>POSICIÓN</Text>
-          <TouchableOpacity
-            style={[
-              styles.positionSelector,
-              position && styles.positionSelected,
-            ]}
-            onPress={() => setShowPositionDropdown(!showPositionDropdown)}
-          >
-            <Text style={styles.positionText}>
-              {position || "SELECCIONA UNA POSICIÓN"}
-            </Text>
-            <Text style={styles.dropdownIcon}>
-              {showPositionDropdown ? "▲" : "▼"}
-            </Text>
-          </TouchableOpacity>
+     <View style={styles.inputContainer}>
+  <Text style={styles.label}>POSICIÓN</Text>
+  <TouchableOpacity
+    style={[
+      styles.positionSelector,
+      position && styles.positionSelected,
+    ]}
+    onPress={() => setShowPositionDropdown(!showPositionDropdown)}
+  >
+    <Text style={styles.positionText}>
+      {position || "SELECCIONA UNA POSICIÓN"}
+    </Text>
+    <Text style={styles.dropdownIcon}>
+      {showPositionDropdown ? "▲" : "▼"}
+    </Text>
+  </TouchableOpacity>
 
-          {showPositionDropdown && positions.length > 0 && (
-            <View style={styles.dropdown}>
-              {positions.map((pos) => (
-                <TouchableOpacity
-                  key={pos}
-                  style={styles.dropdownItem}
-                  onPress={() => selectPosition(pos)}
-                >
-                  <Text style={styles.dropdownItemText}>{pos}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          )}
-        </View>
+  {showPositionDropdown && positions.length > 0 && (
+    <View style={styles.dropdown}>
+      {positions.map((pos) => (
+        <TouchableOpacity
+          key={pos}
+          style={styles.dropdownItem}
+          onPress={() => selectPosition(pos)}
+        >
+          <Text style={styles.dropdownItemText}>{pos}</Text>
+        </TouchableOpacity>
+      ))}
+    </View>
+  )}
+</View>
 
         <Input
           label="NÚMERO DE CAMISETA"
